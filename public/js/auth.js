@@ -54,7 +54,11 @@ supabase.auth.onAuthStateChange((event, session) => {
 
 // Initialize once DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  guardAccess();
+  const path = window.location.pathname;
+  // Only guard access on protected pages
+  if (!path.endsWith('login.html') && !path.endsWith('register.html') && !path.endsWith('index.html')) {
+    guardAccess();
+  }
 
   // — LOGIN
   const loginForm = document.getElementById('login-form');
