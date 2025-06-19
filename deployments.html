@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ForestGuardAI – Deployments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 overflow-hidden relative">
+  <!-- Sidebar -->
+  <div id="sidebar-placeholder"
+       class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-10">
+  </div>
+  <!-- Mobile toggle -->
+  <button id="menu-btn"
+          class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-20">☰</button>
+
+  <main class="p-6 md:ml-64 space-y-6">
+    <h1 class="text-2xl font-semibold">Deploy Teams & Devices</h1>
+
+    <!-- Deploy Team to Alert -->
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4">Assign Team to Alert</h2>
+      <form id="deploy-team-form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <select name="alert_id" required class="px-3 py-2 border rounded">
+          <option value="">Select Alert...</option>
+        </select>
+        <select name="team_id" required class="px-3 py-2 border rounded">
+          <option value="">Select Team...</option>
+        </select>
+        <button type="submit"
+                class="bg-green-900 text-white px-4 py-2 rounded hover:bg-green-800 transition">
+          Deploy
+        </button>
+      </form>
+    </section>
+
+    <!-- Deploy Device -->
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4">Record New Device Deployment</h2>
+      <form id="deploy-device-form" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <select name="device_id" required class="px-3 py-2 border rounded">
+          <option value="">Select Device...</option>
+        </select>
+        <input type="text" name="location" placeholder="Location" required
+               class="px-3 py-2 border rounded"/>
+        <button type="submit"
+                class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+          Record Deployment
+        </button>
+      </form>
+    </section>
+
+    <!-- Existing Deployments -->
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4">Current Deployments</h2>
+      <ul id="deployment-list" class="space-y-4"></ul>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('menu-btn').onclick = () =>
+      document.getElementById('sidebar-placeholder').classList.toggle('hidden');
+  </script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/supabaseClient.js"></script>
+  <script type="module" src="js/deployments.js"></script>
+</body>
+</html>

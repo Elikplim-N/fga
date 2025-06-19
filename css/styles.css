@@ -1,0 +1,24 @@
+/* Import custom font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+/* Base layer overrides */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Custom component utilities */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded;
+  }
+  .btn-primary {
+    @apply bg-green-600 text-white hover:bg-green-700;
+  }
+  .btn-secondary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+}
+
+/* Any additional spacing, colors, or overrides go here */

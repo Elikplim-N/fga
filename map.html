@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ForestGuardAI – Map</title>
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+</head>
+<body class="bg-gray-100 text-gray-800 overflow-hidden relative">
+
+  <!-- Sidebar injection point -->
+  <div
+    id="sidebar-placeholder"
+    class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto"
+  ></div>
+
+  <!-- Mobile menu button -->
+  <button
+    id="menu-btn"
+    class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-10"
+  >
+    ☰
+  </button>
+
+  <!-- Main content -->
+  <main class="p-6 md:ml-64">
+    <h1 class="text-2xl font-semibold mb-4">Map View</h1>
+    <div id="map" class="h-96 rounded-xl shadow"></div>
+  </main>
+
+  <!-- Sidebar toggle script -->
+  <script>
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('sidebar-placeholder').classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Leaflet JS (UMD) -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- Your modules -->
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/supabaseClient.js"></script>
+  <script type="module" src="js/map.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ForestGuardAI – Reports</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 overflow-hidden relative">
+
+  <!-- Sidebar -->
+  <div
+    id="sidebar-placeholder"
+    class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-10"
+  ></div>
+
+  <!-- Mobile toggle -->
+  <button
+    id="menu-btn"
+    class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-20"
+  >☰</button>
+
+  <!-- Main -->
+  <main class="p-6 md:ml-64">
+    <h1 class="text-2xl font-semibold mb-4">Reports</h1>
+    <button
+      id="export-csv"
+      class="mb-6 bg-green-900 text-white px-4 py-2 rounded hover:bg-green-800 transition"
+    >Export All Reports CSV</button>
+    <ul id="report-list" class="space-y-4">
+      <!-- JS will inject reports here -->
+    </ul>
+  </main>
+
+  <!-- Toggle sidebar -->
+  <script>
+    document.getElementById('menu-btn')
+      .addEventListener('click', () =>
+        document.getElementById('sidebar-placeholder').classList.toggle('hidden')
+      );
+  </script>
+
+  <!-- Modules -->
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/supabaseClient.js"></script>
+  <script type="module" src="js/report.js"></script>
+</body>
+</html>

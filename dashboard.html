@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ForestGuardAI – Dashboard</title>
+  
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 overflow-hidden relative">
+  
+  <!-- Sidebar injection point -->
+  <div
+    id="sidebar-placeholder"
+    class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-10"
+  ></div>
+  
+  <!-- Mobile menu button -->
+  <button
+    id="menu-btn"
+    class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-20"
+  >
+    ☰
+  </button>
+  
+  <!-- Main content -->
+  <main class="p-6 md:ml-64">
+    <h1 class="text-3xl font-semibold mb-6">Dashboard</h1>
+
+    <!-- Stats Row -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="bg-white shadow rounded-xl p-6 text-center">
+        <h2 class="text-lg font-semibold mb-2">Total Devices</h2>
+        <p id="devices-count" class="text-3xl">–</p>
+      </div>
+      <div class="bg-white shadow rounded-xl p-6 text-center">
+        <h2 class="text-lg font-semibold mb-2">Total Alerts</h2>
+        <p id="alerts-count" class="text-3xl">–</p>
+      </div>
+      <div class="bg-white shadow rounded-xl p-6 text-center">
+        <h2 class="text-lg font-semibold mb-2">Team Members</h2>
+        <p id="teams-count" class="text-3xl">–</p>
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+      <div class="bg-white shadow rounded-xl p-6">
+        <h2 class="text-lg font-semibold mb-4">Device Status</h2>
+        <canvas id="status-chart"></canvas>
+      </div>
+      <div class="bg-white shadow rounded-xl p-6">
+        <h2 class="text-lg font-semibold mb-4">Alerts Over Time</h2>
+        <canvas id="alerts-chart"></canvas>
+      </div>
+    </section>
+
+    <!-- Recent & Feed -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white shadow rounded-xl p-6">
+        <h2 class="text-lg font-semibold mb-2">📣 Recent Activity</h2>
+        <ul id="recent-activity" class="text-sm space-y-2"></ul>
+      </div>
+      <div class="bg-white shadow rounded-xl p-6">
+        <h2 class="text-lg font-semibold mb-2">👥 Team Feed</h2>
+        <ul id="team-feed" class="text-sm space-y-2"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sidebar toggle script -->
+  <script>
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('sidebar-placeholder').classList.toggle('hidden');
+    });
+  </script>
+
+  <!-- Modules -->
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/supabaseClient.js"></script>
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>

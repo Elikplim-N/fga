@@ -1,0 +1,82 @@
+<!-- sidebar.html -->
+<!-- MOBILE: Toggle button -->
+<button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar"
+  type="button"
+  class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-green-200 rounded-lg sm:hidden hover:bg-green-800 focus:outline-none focus:ring-2 focus:ring-green-600">
+  <span class="sr-only">Open sidebar</span>
+  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M2 4h16M2 10h16M2 16h16" />
+  </svg>
+</button>
+
+<!-- DRAWER -->
+<aside id="default-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen pt-4 transition-transform -translate-x-full sm:translate-x-0 bg-green-900"
+  aria-label="Sidebar">
+  <div class="px-3 pb-4 overflow-y-auto h-full">
+    <a href="dashboard.html" class="flex items-center pl-2 mb-8">
+      <span class="text-2xl font-semibold text-white">ForestGuardAI</span>
+    </a>
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="dashboard.html" class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+          <img class="w-10 h-10"  src="https://cdn-icons-png.flaticon.com/128/2781/2781997.png" alt="" srcset="">
+          <span class="ml-3">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        
+          <a href="devices.html" class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+<img class="w-10 h-10"  src="https://cdn-icons-png.flaticon.com/128/10472/10472929.png"
+  alt="Icon"
+  class="icon-bold"
+/>
+            <span class="ml-3">Devices</span>
+          </a>
+       
+      </li>
+      <li>
+        <a href="manage-devices.html"
+          class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+          <img class="w-10 h-10"  src="https://cdn-icons-png.flaticon.com/128/8596/8596465.png" alt="" srcset="">
+          <span class="ml-3">Manage Devices</span>
+        </a>
+      </li>
+      <li>
+        <a href="alerts.html" class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+          <img class="w-10 h-10" src="https://cdn-icons-png.flaticon.com/128/12490/12490637.png" alt="" srcset="">
+          <span class="ml-3">Alerts</span>
+        </a>
+      </li>
+      <li>
+        <a href="deployments.html"
+          class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+          <img class="w-10 h-10"  src="https://cdn-icons-png.flaticon.com/128/9927/9927196.png " alt="" srcset="">
+          <span class="ml-3">Deployments</span>
+        </a>
+      </li>
+      <li>
+        <a href="map.html" class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+          <img class="w-10 h-10" src="https://cdn-icons-png.flaticon.com/128/5248/5248673.png" alt="" srcset="">
+          <span class="ml-3">Map</span>
+        </a>
+      </li>
+      <li>
+        <a href="notifications.html"
+          class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+          <img class="w-10 h-10" src="https://cdn-icons-png.flaticon.com/128/3420/3420861.png" alt="" srcset="">
+          <span class="ml-3">Notifications</span>
+        </a>
+      </li>
+      <li>
+        <a href="report.html" class="flex items-center p-2 text-green-200 rounded-lg hover:bg-green-800 transition">
+          <img class="w-10 h-10" src="https://cdn-icons-png.flaticon.com/128/3534/3534046.png" alt="" srcset="">
+          <span class="ml-3">Reports</span>
+        </a>
+      </li>
+    </ul>
+    <button id="logout-btn" class="flex items-center justify-center w-full mt-6 bg-green-600 hover:bg-green-700 text-white py-2 rounded transition">
+      Sign Out
+    </button>
+  </div>
+</aside>

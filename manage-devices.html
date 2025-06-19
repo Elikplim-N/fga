@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ForestGuardAI – Manage Devices</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 overflow-hidden relative">
+  <!-- Sidebar -->
+  <div id="sidebar-placeholder"
+       class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-10">
+  </div>
+  <!-- Mobile toggle -->
+  <button id="menu-btn"
+          class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-20">☰</button>
+
+  <main class="p-6 md:ml-64 space-y-6">
+    <h1 class="text-2xl font-semibold">Device Management</h1>
+
+    <!-- Add Device Form -->
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4">Add New Device</h2>
+      <form id="add-device-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <input name="device_id" placeholder="Device ID" required
+               class="px-3 py-2 border rounded"/>
+        <input name="name" placeholder="Device Name" required
+               class="px-3 py-2 border rounded"/>
+        <input type="number" step="0.000001" name="latitude" placeholder="Latitude" required
+               class="px-3 py-2 border rounded"/>
+        <input type="number" step="0.000001" name="longitude" placeholder="Longitude" required
+               class="px-3 py-2 border rounded"/>
+        <select name="status" required class="px-3 py-2 border rounded">
+          <option value="">Status...</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+          <option value="maintenance">Maintenance</option>
+        </select>
+        <select name="communication_type" required class="px-3 py-2 border rounded">
+          <option value="">Comm Type...</option>
+          <option value="lora">LoRa</option>
+          <option value="gsm">GSM</option>
+          <option value="satellite">Satellite</option>
+        </select>
+        <button type="submit" class="bg-green-900 text-white px-4 py-2 rounded hover:bg-green-800 transition">
+          Add Device
+        </button>
+      </form>
+    </section>
+
+    <!-- List Devices -->
+    <section class="bg-white shadow rounded-xl p-6">
+      <h2 class="text-lg font-semibold mb-4">Existing Devices</h2>
+      <ul id="device-list" class="space-y-4"></ul>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('menu-btn').onclick = () =>
+      document.getElementById('sidebar-placeholder').classList.toggle('hidden');
+  </script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/supabaseClient.js"></script>
+  <script type="module" src="js/manage-devices.js"></script>
+</body>
+</html>
