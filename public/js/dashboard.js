@@ -66,7 +66,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   const recentEl = document.getElementById('recent-activity');
   recent.forEach(a => {
     const li = document.createElement('li');
-    li.textContent = `[${new Date(a.created_at).toLocaleTimeString()}] ${a.alert_type}`;
+    li.className = 'flex items-center gap-2';
+    li.innerHTML = `
+      <span class="text-xs text-gray-500">${new Date(a.created_at).toLocaleTimeString()}</span>
+      <span class="font-medium">${a.alert_type}</span>
+    `;
     recentEl.appendChild(li);
   });
 
@@ -79,7 +83,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const feedEl = document.getElementById('team-feed');
   feed.forEach(d => {
     const li = document.createElement('li');
-    li.textContent = `[${new Date(d.created_at).toLocaleDateString()}] Status: ${d.status}`;
+    li.className = 'flex items-center gap-2';
+    li.innerHTML = `
+      <span class="text-xs text-gray-500">${new Date(d.created_at).toLocaleDateString()}</span>
+      <span>Status:</span>
+      <span class="font-medium">${d.status}</span>
+    `;
     feedEl.appendChild(li);
   });
 
