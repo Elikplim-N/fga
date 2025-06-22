@@ -2,7 +2,6 @@
 import { supabase } from './supabaseClient.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  document.body.style.height = '200vh';
   // 1) Redirect if not logged in
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return window.location.href = 'login.html';
