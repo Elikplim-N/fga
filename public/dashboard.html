@@ -11,21 +11,34 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 min-h-screen relative">
-  
-  <!-- Sidebar injection point -->
+  <!-- Sidebar -->
   <div
     id="sidebar-placeholder"
-    class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-10"
-  ></div>
-  
+    class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-30 transition-transform duration-200"
+  >
+    <nav class="p-4 space-y-4">
+      <a href="dashboard.html" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
+      <a href="alerts.html" class="block py-2 px-4 rounded hover:bg-gray-700">Alerts</a>
+      <a href="devices.html" class="block py-2 px-4 rounded hover:bg-gray-700">Devices</a>
+      <a href="deployments.html" class="block py-2 px-4 rounded hover:bg-gray-700">Deployments</a>
+      <a href="report.html" class="block py-2 px-4 rounded hover:bg-gray-700">Reports</a>
+      <a href="manage-devices.html" class="block py-2 px-4 rounded hover:bg-gray-700">Manage Devices</a>
+      <a href="map.html" class="block py-2 px-4 rounded hover:bg-gray-700">Map</a>
+      <a href="notifications.html" class="block py-2 px-4 rounded hover:bg-gray-700">Notifications</a>
+      <a href="login.html" class="block py-2 px-4 rounded hover:bg-gray-700">Sign Out</a>
+    </nav>
+  </div>
+
+  <!-- Overlay for mobile -->
+  <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-40 z-20 hidden md:hidden"></div>
+
   <!-- Mobile menu button -->
   <button
     id="menu-btn"
-    class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-20"
-  >
-    ☰
-  </button>
-  
+    class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-40"
+    aria-label="Open sidebar"
+  >☰</button>
+
   <!-- Main content -->
   <main class="p-6 md:ml-64">
     <h1 class="text-3xl font-semibold mb-6">Dashboard</h1>
@@ -73,8 +86,16 @@
 
   <!-- Sidebar toggle script -->
   <script>
-    document.getElementById('menu-btn').addEventListener('click', () => {
-      document.getElementById('sidebar-placeholder').classList.toggle('hidden');
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar-placeholder');
+    const overlay = document.getElementById('sidebar-overlay');
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+      overlay.classList.toggle('hidden');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.add('hidden');
+      overlay.classList.add('hidden');
     });
   </script>
 
