@@ -9,21 +9,84 @@
 </head>
 <body class="bg-gray-100 text-gray-800 overflow-hidden relative">
 
-  <!-- Sidebar injection point -->
-  <div
-    id="sidebar-placeholder"
-    class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-10"
-  ></div>
+    <!-- Sidebar -->
+<div
+  id="sidebar-placeholder"
+  class="hidden md:block fixed inset-y-0 left-0 w-64 bg-gray-800 text-white overflow-auto z-30 transition-transform duration-200"
+>
+  <nav class="p-4 space-y-4">
+    <a href="dashboard.html" class="block py-2 px-4 rounded hover:bg-gray-700">Dashboard</a>
+    <a href="alerts.html" class="block py-2 px-4 rounded hover:bg-gray-700">Alerts</a>
+    <a href="devices.html" class="block py-2 px-4 rounded hover:bg-gray-700">Devices</a>
+    <a href="deployments.html" class="block py-2 px-4 rounded hover:bg-gray-700">Deployments</a>
+    <a href="report.html" class="block py-2 px-4 rounded hover:bg-gray-700">Reports</a>
+    <a href="manage-devices.html" class="block py-2 px-4 rounded hover:bg-gray-700">Manage Devices</a>
+    <a href="map.html" class="block py-2 px-4 rounded hover:bg-gray-700">Map</a>
+    <a href="notifications.html" class="block py-2 px-4 rounded hover:bg-gray-700">Notifications</a>
+    <a href="login.html" class="block py-2 px-4 rounded hover:bg-gray-700">Sign Out</a>
+  </nav>
+</div>
 
-  <!-- Mobile menu button -->
-  <button
-    id="menu-btn"
-    class="md:hidden p-2 fixed top-4 left-4 bg-gray-800 text-white rounded z-20"
-  >☰</button>
+<!-- Mobile Sidebar (hidden by default) -->
+<div
+  id="mobile-sidebar"
+  class="fixed inset-y-0 left-0 w-64 bg-green-800 text-white overflow-auto z-30 transform -translate-x-full transition-transform duration-200 md:hidden"
+>
+ <nav class="p-4 space-y-4 mt-10">
+    <a href="dashboard.html" class="block py-2 px-4 rounded hover:bg-green-600">Dashboard</a>
+    <a href="alerts.html" class="block py-2 px-4 rounded hover:bg-green-600">Alerts</a>
+    <a href="devices.html" class="block py-2 px-4 rounded hover:bg-green-600">Devices</a>
+    <a href="deployments.html" class="block py-2 px-4 rounded hover:bg-green-600">Deployments</a>
+    <a href="report.html" class="block py-2 px-4 rounded hover:bg-green-600">Reports</a>
+    <a href="manage-devices.html" class="block py-2 px-4 rounded hover:bg-green-600">Manage Devices</a>
+    <a href="map.html" class="block py-2 px-4 rounded hover:bg-green-600">Map</a>
+    <a href="notifications.html" class="block py-2 px-4 rounded hover:bg-green-600">Notifications</a>
+    <a href="login.html" class="block py-2 px-4 rounded hover:bg-green-600">Sign Out</a>
+  </nav>
+</div>
+
+<!-- Overlay for mobile -->
+<div
+  id="sidebar-overlay"
+  class="fixed inset-0 bg-black bg-opacity-40 z-20 hidden md:hidden"
+></div>
+
+<!-- Mobile menu button -->
+<button
+  id="menu-btn"
+  class="md:hidden p-2 fixed top-4 left-4 bg-green-800 text-white rounded z-40"
+  aria-label="Open sidebar"
+>
+  ☰
+</button>
+
+<!-- JS Toggle -->
+<script>
+  const btn     = document.getElementById('menu-btn');
+  const overlay = document.getElementById('sidebar-overlay');
+  const mobileSidebar = document.getElementById('mobile-sidebar');
+
+  function toggleMobileSidebar() {
+    const isClosed = mobileSidebar.classList.contains('-translate-x-full');
+
+    mobileSidebar.classList.toggle('-translate-x-full');
+    overlay.classList.toggle('hidden');
+    document.body.classList.toggle('overflow-hidden');
+    btn.setAttribute('aria-expanded', isClosed);
+  }
+
+  btn.addEventListener('click', toggleMobileSidebar);
+  overlay.addEventListener('click', toggleMobileSidebar);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !mobileSidebar.classList.contains('-translate-x-full')) {
+      toggleMobileSidebar();
+    }
+  });
+</script>
 
   <!-- Main content -->
   <main class="p-6 md:ml-64">
-    <h1 class="text-2xl font-semibold mb-4">Devices</h1>
+    <h1 class="text-2xl font-semibold mb-4 mb-6 ml-8">Devices</h1>
     <ul id="device-list" class="space-y-4">
       <!-- Device cards will be injected here -->
     </ul>
