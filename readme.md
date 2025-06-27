@@ -1,15 +1,16 @@
 # ForestGuardAI
 
-ForestGuardAI is an integrated wildfire and forest monitoring system combining IoT sensor nodes, a LoRaWAN gateway, and a web dashboard powered by Supabase. It enables real-time alerting, device management, and team coordination for forest protection.
+ForestGuardAI is an integrated forest monitoring system designed to detect and prevent **illegal logging in forest reserves**. It combines IoT sensor nodes, a LoRaWAN gateway, and a web dashboard powered by Supabase. The system enables real-time alerting, device management, and team coordination to protect forests from unauthorized activities.
 
 ---
 
 ## Features
 
-- **IoT Sensor Nodes**: Edge ML for event detection (e.g., fire, vibration), LoRa uplink.
+- **IoT Sensor Nodes**: Edge ML for event detection (e.g., chainsaw sound, vibration, intrusion), LoRa uplink.
 - **LoRa Gateway**: Receives node data, relays to Supabase, sends SMS alerts via SIM800L.
 - **Web Dashboard**: Device/alert management, team deployments, map view, notifications, and reports.
 - **User Authentication**: Supabase Auth for secure access.
+- **Illegal Logging Detection**: Real-time alerts for suspicious activities such as chainsaw operation or unauthorized entry.
 
 ---
 
